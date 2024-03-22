@@ -25,7 +25,7 @@ print("== Registration ==")
 username = input("Username: ")
 
 password = input("Password: ")
-while len(password) < 8:
+while len(password) < 8 or password.isalpha() or password.isdigit():
     print("Invalid password. Please input again.")
     password = input("Password: ")
     continue

@@ -1,52 +1,42 @@
-import random
-print("== FREAKING MATH CONSOLE == \nGive correct answers to get scores.")
+from random import *
 
 score = 0
-
-for i in range(30):
-    a = random.randint(1,15)
-    b = random.randint(1,15)
-    c = random.randint(-15,30)
-    n = random.randint(1,4)
-    if (n==1):
-        print(f"{a}+{b}={c}")
-        ans = int(input("1 for True, 0 for False: "))
-        if (ans == 1 and a+b==c) or (ans == 0  and not a+b==c):
-            score += 1
-            print("Score: ", score, "\n")
-            continue
-        else:
-            print("Incorrect!")
-            break
-    elif (n==2):
-        print(f"{a}-{b}={c}")
-        ans = int(input("1 for True, 0 for False: "))
-        if (ans == 1 and a-b==c) or (ans == 0  and not a-b==c):
-            score += 1
-            print("Score: ", score, "\n")
-            continue
-        else:
-            print("Incorrect!")
-            break
-    elif (n==3):
-        print(f"{a}*{b}={c}")
-        ans = int(input("1 for True, 0 for False: "))
-        if (ans == 1 and a*b==c) or (ans == 0  and not a*b==c):
-            score += 1
-            print("Score: ", score, "\n")
-            continue
-        else:
-            print("Incorrect!")
-            break
+result = True
+while result:
+# tao ra bieu thuc (a, b, phep toan, ket qua dung - sai)
+    a = randint(0, 10)
+    b = randint(1, 10)
+    operator = choice(["*", "/", "+", "-"])
+    ans_false = randint(-50, 50)
+# kiem tra phep toan => tinh ket qua dung
+    if operator == "*":
+        ans_true = a * b
+    elif operator == "/":
+        ans_true = a / b
+    elif operator == "+":
+        ans_true = a + b
     else:
-        print(f"{a}/{b}={c}")
-        ans = int(input("1 for True, 0 for False: "))
-        if (ans == 1 and a/b==c) or (ans == 0  and not a/b==c):
-            score += 1
-            print("Score: ", score, "\n")
+        ans_true = a - b
+# in ra man hinh
+    ans = choice([ans_false, ans_true])
+    print(str(a) + operator + str(b) + " = " + str(ans))
+    user_ans = int(input("0 is True, 1 is False: "))
+# xet ket qua cua nguoi dung
+    if (user_ans == 0):
+        if (ans == ans_true):
+            score+=1
+            print(f"Score: {score}")
             continue
         else:
-            print("Incorrect!")
+            print("Game over")
+            result = False
             break
-if score == 30:
-    print("Congratulations! You've completed the game!")
+    if (user_ans == 1):
+        if (ans == ans_false):
+            score+=1
+            print(f"Score: {score}")
+            continue
+        else:
+            print("Game over")
+            result = False
+            break

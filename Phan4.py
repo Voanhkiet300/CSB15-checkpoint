@@ -37,7 +37,7 @@ while password != repeatPassword:
     continue
 
 email = input("Email: ")
-while email.find("@") == -1 or email.find("@")+1 == len(email) or email.find(".") == -1 or email.find(".")+1 == len(email):
+while email.find("@") == -1 or email.find("@")+1 == len(email) or email.find(".") == -1 or email.find(".")+1 == len(email) or email.find("@." or ".@"):
     print("Invalid email. Please input again.")
     email = input("Email: ")
     continue

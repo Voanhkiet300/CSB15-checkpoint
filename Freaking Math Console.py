@@ -1,4 +1,4 @@
-import random
+from random import *
 import time
 
 
@@ -43,6 +43,7 @@ for i in range(10):
     a = random.randint(1,15)
     b = random.randint(1,15)
     c = random.randint(-15,30)
+    # n = choice("+", "-", "*", "/")
     n = random.randint(1,4)
     e = random.randint(0,1)
     # wrong answer
